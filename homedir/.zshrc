@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 # if you want to use this, change your non-ascii font to Droid Sans Mono for Awesome
-POWERLEVEL9K_MODE='awesome-patched'
+# POWERLEVEL9K_MODE='awesome-patched'
 export ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # https://github.com/bhilburn/powerlevel9k#customizing-prompt-segments
@@ -33,6 +33,8 @@ plugins=(colorize compleat dirpersist autojump git gulp history cp)
 
 source $ZSH/oh-my-zsh.sh
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 source /usr/local/opt/nvm/nvm.sh
 
 autoload -U add-zsh-hook
@@ -48,3 +50,6 @@ load-nvmrc
 
 # Customize to your needs...
 unsetopt correct
+
+# run fortune on new terminal :)
+fortune

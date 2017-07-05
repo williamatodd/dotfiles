@@ -16,7 +16,7 @@ module.exports = {
     'gnupg',
     // Install GNU `sed`, overwriting the built-in `sed`
     // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
-    'gnu-sed --default-names',
+    'gnu-sed --with-default-names',
     // better, more recent grep
     'homebrew/dupes/grep',
     // https://github.com/jkbrzt/httpie
@@ -36,7 +36,7 @@ module.exports = {
     'tree',
     'ttyrec',
     // better, more recent vim
-    'vim --override-system-vi',
+    'vim --with-override-system-vi',
     'watch',
     // Install wget with IRI support
     'wget --enable-iri'
@@ -45,10 +45,16 @@ module.exports = {
     'atom',
     'gpgtools',
     'iterm2',
-    'sizeup',
     'slack',
+    'caffeine',
     'the-unarchiver',
     'torbrowser',
+    'little-snitch',
+    'micro-snitch',
+    'kaleidoscope',
+    'appcleaner',
+    'transmit',
+    'daisydisk',
     'xquartz'
   ],
   gem: [
@@ -60,10 +66,8 @@ module.exports = {
     'buzzphrase',
     'eslint',
     'instant-markdown-d',
-    'npm-check',
-    'yo',
-    'generator-dockerize',
     'gulp',
+    'npm-check',
     'prettyjson',
     'trash',
     'vtop'
