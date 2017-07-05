@@ -48,7 +48,6 @@ module.exports = {
     'slack',
     'caffeine',
     'the-unarchiver',
-    'torbrowser',
     'little-snitch',
     'micro-snitch',
     'kaleidoscope',
