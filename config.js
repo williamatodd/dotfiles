@@ -16,13 +16,13 @@ module.exports = {
     'gnupg',
     // Install GNU `sed`, overwriting the built-in `sed`
     // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
-    'gnu-sed --default-names',
+    'gnu-sed --with-default-names',
     // better, more recent grep
     'homebrew/dupes/grep',
     // https://github.com/jkbrzt/httpie
     'httpie',
     'imagemagick',
-    'imagesnap',
+    //'imagesnap',
     // jq is a sort of JSON grep
     'jq',
     // Install some other useful utilities like `sponge`
@@ -36,19 +36,17 @@ module.exports = {
     'tree',
     'ttyrec',
     // better, more recent vim
-    'vim --override-system-vi',
+    'vim --with-override-system-vi',
     'watch',
     // Install wget with IRI support
     'wget --enable-iri'
   ],
   cask: [
-    'dropbox',
+    'atom',
     'gpgtools',
-    'caffeine',
     'iterm2',
-    'sizeup',
-    'mongohub',
     'slack',
+    'caffeine',
     'the-unarchiver',
     'little-snitch',
     'micro-snitch',
@@ -56,21 +54,19 @@ module.exports = {
     'appcleaner',
     'transmit',
     'daisydisk',
-    'arq',
     'xquartz'
   ],
   gem: [
-    'git-up'
+    'git-up',
+    'rubocop'
   ],
   npm: [
     'antic',
     'buzzphrase',
     'eslint',
     'instant-markdown-d',
-    'npm-check',
-    'yo',
-    'generator-dockerize',
     'gulp',
+    'npm-check',
     'prettyjson',
     'trash',
     'vtop'

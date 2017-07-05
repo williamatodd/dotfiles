@@ -6,5 +6,4 @@ source ~/.shellvars
 source ~/.shellfn
 source ~/.shellpaths
 source ~/.shellaliases
-# Private/Proprietary shell aliases (not to be checked into the public repo) :)
-#source ~/Dropbox/Private/Boxes/osx/.shellaliases
+source ~/.iterm2_shell_integration.`basename $SHELL`
