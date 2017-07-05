@@ -11,11 +11,6 @@ source ./lib_sh/requirers.sh
 
 bot "Hi! I'm going to install tooling and tweak your system settings. Here I go..."
 
-# ensure ~/.gitshots exists to prevent "Error." in terminal after git commits
-# TODO: use node/yoeman to templatize elements of this project and use inquerer to ask if the
-# user wants to use gitshots
-mkdir -p ~/.gitshots
-
 # Ask for the administrator password upfront
 if sudo grep -q "# %wheel\tALL=(ALL) NOPASSWD: ALL" "/etc/sudoers"; then
 
@@ -279,17 +274,17 @@ bot "Configuring General System UI/UX..."
 ###############################################################################
 
 running "Disable local Time Machine snapshots"
-sudo tmutil disablelocal;ok
+# sudo tmutil disablelocal;ok
 
 running "Disable hibernation (speeds up entering sleep mode)"
-sudo pmset -a hibernatemode 0;ok
+# sudo pmset -a hibernatemode 0;ok
 
 running "Remove the sleep image file to save disk space"
-sudo rm -rf /Private/var/vm/sleepimage;ok
+# sudo rm -rf /Private/var/vm/sleepimage;ok
 running "Create a zero-byte file instead"
-sudo touch /Private/var/vm/sleepimage;ok
+# sudo touch /Private/var/vm/sleepimage;ok
 running "…and make sure it can’t be rewritten"
-sudo chflags uchg /Private/var/vm/sleepimage;ok
+# sudo chflags uchg /Private/var/vm/sleepimage;ok
 
 #running "Disable the sudden motion sensor as it’s not useful for SSDs"
 # sudo pmset -a sms 0;ok
@@ -364,7 +359,7 @@ running "Set standby delay to 24 hours (default is 1 hour)"
 sudo pmset -a standbydelay 86400;ok
 
 running "Disable the sound effects on boot"
-sudo nvram SystemAudioVolume=" ";ok
+# sudo nvram SystemAudioVolume=" ";ok
 
 running "Menu bar: disable transparency"
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
@@ -432,17 +427,17 @@ defaults write com.apple.helpviewer DevMode -bool true;ok
 running "Reveal IP, hostname, OS, etc. when clicking clock in login window"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName;ok
 
-running "Restart automatically if the computer freezes"
-sudo systemsetup -setrestartfreeze on;ok
+# running "Restart automatically if the computer freezes"
+# sudo systemsetup -setrestartfreeze on;ok
 
-running "Never go into computer sleep mode"
-sudo systemsetup -setcomputersleep Off > /dev/null;ok
+# running "Never go into computer sleep mode"
+# sudo systemsetup -setcomputersleep Off > /dev/null;ok
 
 running "Check for software updates daily, not just once per week"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1;ok
 
-running "Disable Notification Center and remove the menu bar icon"
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist > /dev/null 2>&1;ok
+# running "Disable Notification Center and remove the menu bar icon"
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist > /dev/null 2>&1;ok
 
 running "Disable smart quotes as they’re annoying when typing code"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false;ok
@@ -455,10 +450,10 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false;ok
 bot "Trackpad, mouse, keyboard, Bluetooth accessories, and input"
 ###############################################################################
 
-running "Trackpad: enable tap to click for this user and for the login screen"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1;ok
+# running "Trackpad: enable tap to click for this user and for the login screen"
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1;ok
 
 running "Trackpad: map bottom right corner to right-click"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
@@ -469,8 +464,8 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 running "Disable 'natural' (Lion-style) scrolling"
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false;ok
 
-running "Increase sound quality for Bluetooth headphones/headsets"
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40;ok
+# running "Increase sound quality for Bluetooth headphones/headsets"
+# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40;ok
 
 running "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3;ok
@@ -529,10 +524,10 @@ defaults write com.apple.finder QuitMenuItem -bool true;ok
 running "Disable window animations and Get Info animations"
 defaults write com.apple.finder DisableAllAnimations -bool true;ok
 
-running "Set Desktop as the default location for new Finder windows"
+running "Set Home as the default location for new Finder windows"
 # For other paths, use 'PfLo' and 'file:///full/path/here/'
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/";ok
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}";ok
 
 running "Show hidden files by default"
 defaults write com.apple.finder AppleShowAllFiles -bool true;ok
@@ -587,8 +582,8 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false;ok
 running "Empty Trash securely by default"
 defaults write com.apple.finder EmptyTrashSecurely -bool true;ok
 
-running "Enable AirDrop over Ethernet and on unsupported Macs running Lion"
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true;ok
+# running "Enable AirDrop over Ethernet and on unsupported Macs running Lion"
+# defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true;ok
 
 running "Show the ~/Library folder"
 chflags nohidden ~/Library;ok
@@ -632,8 +627,8 @@ running "Don’t group windows by application in Mission Control"
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false;ok
 
-running "Disable Dashboard"
-defaults write com.apple.dashboard mcx-disabled -bool true;ok
+# running "Disable Dashboard"
+# defaults write com.apple.dashboard mcx-disabled -bool true;ok
 
 running "Don’t show Dashboard as a Space"
 defaults write com.apple.dock dashboard-in-overlay -bool true;ok
@@ -649,11 +644,11 @@ defaults write com.apple.dock autohide-time-modifier -float 0;ok
 running "Automatically hide and show the Dock"
 defaults write com.apple.dock autohide -bool true;ok
 
-running "Make Dock icons of hidden applications translucent"
-defaults write com.apple.dock showhidden -bool true;ok
+# running "Make Dock icons of hidden applications translucent"
+# defaults write com.apple.dock showhidden -bool true;ok
 
-running "Make Dock more transparent"
-defaults write com.apple.dock hide-mirror -bool true;ok
+# running "Make Dock more transparent"
+# defaults write com.apple.dock hide-mirror -bool true;ok
 
 running "Reset Launchpad, but keep the desktop wallpaper intact"
 find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete;ok
@@ -671,15 +666,15 @@ bot "Configuring Hot Corners"
 # 11: Launchpad
 # 12: Notification Center
 
-running "Top left screen corner → Mission Control"
-defaults write com.apple.dock wvous-tl-corner -int 2
-defaults write com.apple.dock wvous-tl-modifier -int 0;ok
-running "Top right screen corner → Desktop"
-defaults write com.apple.dock wvous-tr-corner -int 4
-defaults write com.apple.dock wvous-tr-modifier -int 0;ok
-running "Bottom right screen corner → Start screen saver"
-defaults write com.apple.dock wvous-br-corner -int 5
-defaults write com.apple.dock wvous-br-modifier -int 0;ok
+# running "Top left screen corner → Mission Control"
+# defaults write com.apple.dock wvous-tl-corner -int 2
+# defaults write com.apple.dock wvous-tl-modifier -int 0;ok
+# running "Top right screen corner → Desktop"
+# defaults write com.apple.dock wvous-tr-corner -int 4
+# defaults write com.apple.dock wvous-tr-modifier -int 0;ok
+# running "Bottom right screen corner → Start screen saver"
+# defaults write com.apple.dock wvous-br-corner -int 5
+# defaults write com.apple.dock wvous-br-modifier -int 0;ok
 
 ###############################################################################
 bot "Configuring Safari & WebKit"
@@ -695,7 +690,7 @@ running "Allow hitting the Backspace key to go to the previous page in history"
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true;ok
 
 running "Hide Safari’s bookmarks bar by default"
-defaults write com.apple.Safari ShowFavoritesBar -bool false;ok
+# defaults write com.apple.Safari ShowFavoritesBar -bool false;ok
 
 running "Hide Safari’s sidebar in Top Sites"
 defaults write com.apple.Safari ShowSidebarInTopSites -bool false;ok
@@ -756,24 +751,6 @@ bot "Spotlight"
 running "Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed"
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes";ok
-running "Change indexing order and disable some file types from being indexed"
-defaults write com.apple.spotlight orderedItems -array \
-  '{"enabled" = 1;"name" = "APPLICATIONS";}' \
-  '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-  '{"enabled" = 1;"name" = "DIRECTORIES";}' \
-  '{"enabled" = 1;"name" = "PDF";}' \
-  '{"enabled" = 1;"name" = "FONTS";}' \
-  '{"enabled" = 0;"name" = "DOCUMENTS";}' \
-  '{"enabled" = 0;"name" = "MESSAGES";}' \
-  '{"enabled" = 0;"name" = "CONTACT";}' \
-  '{"enabled" = 0;"name" = "EVENT_TODO";}' \
-  '{"enabled" = 0;"name" = "IMAGES";}' \
-  '{"enabled" = 0;"name" = "BOOKMARKS";}' \
-  '{"enabled" = 0;"name" = "MUSIC";}' \
-  '{"enabled" = 0;"name" = "MOVIES";}' \
-  '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-  '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-  '{"enabled" = 0;"name" = "SOURCE";}';ok
 running "Load new settings before rebuilding the index"
 killall mds > /dev/null 2>&1;ok
 running "Make sure indexing is enabled for the main volume"
@@ -810,7 +787,7 @@ open "./configs/Solarized Dark.itermcolors";ok
 running "Don’t display the annoying prompt when quitting iTerm"
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
 running "hide tab title bars"
-defaults write com.googlecode.iterm2 HideTab -bool true;ok
+# defaults write com.googlecode.iterm2 HideTab -bool true;ok
 running "set system-wide hotkey to show/hide iterm with ^\`"
 defaults write com.googlecode.iterm2 Hotkey -bool true;ok
 running "hide pane titles in split panes"
@@ -902,23 +879,11 @@ running "Disable continuous spell checking"
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false;ok
 
 ###############################################################################
-bot "SizeUp.app"
-###############################################################################
-
-running "Start SizeUp at login"
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true;ok
-
-running "Don’t show the preferences window on next start"
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false;ok
-
-killall cfprefsd
-
-###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 bot "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)...."
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-  "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
+  "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
   "iCal" "Terminal"; do
   killall "${app}" > /dev/null 2>&1
 done

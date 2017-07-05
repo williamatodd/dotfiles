@@ -22,7 +22,7 @@ module.exports = {
     // https://github.com/jkbrzt/httpie
     'httpie',
     'imagemagick',
-    'imagesnap',
+    //'imagesnap',
     // jq is a sort of JSON grep
     'jq',
     // Install some other useful utilities like `sponge`
@@ -42,29 +42,18 @@ module.exports = {
     'wget --enable-iri'
   ],
   cask: [
-    //'adium',
-    //'amazon-cloud-drive',
-    //'atom',
-    'box-sync',
-    //'comicbooklover',
-    //'diffmerge',
-    //'dropbox',
-    //'evernote',
+    'atom',
     'gpgtools',
-    //'ireadfast',
     'iterm2',
-    //'macvim',
     'sizeup',
-    //'sketchup',
     'slack',
     'the-unarchiver',
-    //'torbrowser',
-    //'transmission',
-    //'vlc',
+    'torbrowser',
     'xquartz'
   ],
   gem: [
-    'git-up'
+    'git-up',
+    'rubocop'
   ],
   npm: [
     'antic',

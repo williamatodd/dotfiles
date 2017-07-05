@@ -11,7 +11,6 @@
 # Commands to change dirs
 alias to.temp='cd ${MYTEMP}'
 alias to.downloads='cd ${MYDOWNLOADS}'
-alias to.dropbox='cd ~/Dropbox'
 alias to.docs='cd ${MYDOCUMENTS}'
 alias to.code='cd ${MYCODE}'
 alias to.scratch='cd ${MYSCRATCH}'
