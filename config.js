@@ -27,9 +27,12 @@ module.exports = {
     'jq',
     // Install some other useful utilities like `sponge`
     'moreutils',
+    'nginx-passenger-enterprise',
     'nmap',
     'openconnect',
+    'qt@5.5',
     'reattach-to-user-namespace',
+    'redis',
     // better/more recent version of screen
     'homebrew/dupes/screen',
     'tmux',
@@ -44,7 +47,7 @@ module.exports = {
   cask: [
     'atom',
     'gpgtools',
-    'iterm2',
+    'hyper',
     'slack',
     'caffeine',
     'the-unarchiver',
@@ -54,7 +57,11 @@ module.exports = {
     'appcleaner',
     'transmit',
     'daisydisk',
-    'xquartz'
+    'xquartz',
+    'font-fira-code',
+    'font-fira-mono',
+    'keybase',
+    'tresorit'
   ],
   gem: [
     'git-up',
@@ -64,6 +71,7 @@ module.exports = {
     'antic',
     'buzzphrase',
     'eslint',
+    'coffeelint',
     'instant-markdown-d',
     'gulp',
     'npm-check',
