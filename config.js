@@ -3,6 +3,10 @@ module.exports = {
     // http://conqueringthecommandline.com/book/ack_ag
     'ack',
     'ag',
+    'antigen',
+    'assume-role',
+    'awscli',
+    'chromedriver',
     // Install GNU core utilities (those that come with OS X are outdated)
     // Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
     'coreutils',
@@ -25,9 +29,9 @@ module.exports = {
     //'imagesnap',
     // jq is a sort of JSON grep
     'jq',
+    'mongodb',
     // Install some other useful utilities like `sponge`
     'moreutils',
-    'nginx-passenger-enterprise',
     'nmap',
     'openconnect',
     'qt@5.5',
@@ -35,6 +39,8 @@ module.exports = {
     'redis',
     // better/more recent version of screen
     'homebrew/dupes/screen',
+    'terraform',
+    'terraform_landscape',
     'tmux',
     'tree',
     'ttyrec',
@@ -45,9 +51,7 @@ module.exports = {
     'wget --enable-iri'
   ],
   cask: [
-    'atom',
     'gpgtools',
-    'hyper',
     'slack',
     'caffeine',
     'the-unarchiver',
@@ -58,8 +62,6 @@ module.exports = {
     'transmit',
     'daisydisk',
     'xquartz',
-    'font-fira-code',
-    'font-fira-mono',
     'keybase',
     'tresorit'
   ],

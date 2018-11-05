@@ -2,6 +2,12 @@
 export PATH=$PATH:.
 #export PATH=$PATH:~/.dotfiles/scripts
 
+# Brew Ruby
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+
 #Brew
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
@@ -9,5 +15,5 @@ export PATH=/usr/local/bin:$PATH
 # GO
 # export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
-# QT
-PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+# PYTHON
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"

@@ -1,6 +1,6 @@
 [user]
 	name = William Todd
-	email = gh@wtodd.neomailbox.ch
+	email = williamatodd@users.noreply.github.com
 [github]
   # https://github.com/blog/180-local-github-config
   user = williamatodd
@@ -159,20 +159,14 @@
   prompt = false
 
 [diff]
-  tool = vimdiff
-
-[init]
-  templatedir = ~/.dotfiles/.git_template
+  tool = ksdiff
 
 [mergetool]
   prompt = false
   keepBackup = false
 
 [merge]
-  tool = vimdiff
-  # Always show a diffstat at the end of a merge
-  stat = true
-  conflictstyle = diff3
+  tool = ksdiff
 
 [branch]
     # Automatically set up pull to be --rebase
@@ -183,7 +177,7 @@
   helper = cache
 
 [filter "tabspace"]
-  clean = expand -t 4
+  clean = expand -t 2
 
 [push]
   default = matching

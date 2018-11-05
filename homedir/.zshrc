@@ -1,42 +1,31 @@
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.dotfiles/oh-my-zsh
-export ZSH_THEME="hyperzsh/hyperzsh"
+source /usr/local/share/antigen/antigen.zsh
 
-# Set to this to use case-sensitive completion
-export CASE_SENSITIVE="true"
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-# disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle ruby
+antigen bundle heroku
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
 
-# disable colors in ls
-# export DISABLE_LS_COLORS="true"
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
 
-# disable autosetting terminal title.
-export DISABLE_AUTO_TITLE="true"
+# Load the theme.
+antigen theme eendroroy/alien-minimal alien-minimal
 
-# Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(colorize compleat dirpersist autojump git gulp history cp)
+# Tell Antigen that you're done.
+antigen apply
 
-source $ZSH/oh-my-zsh.sh
+source $(which assume-role)
 
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-source /usr/local/opt/nvm/nvm.sh
-
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use &> /dev/null
-  elif [[ $(nvm version) != $(nvm version default)  ]]; then
-    nvm use default &> /dev/null
-  fi
+# AWS ACCOUNT NAME
+function aws_account_info {
+  [ "$AWS_ACCOUNT_NAME" ] && [ "$AWS_ACCOUNT_ROLE" ] && echo "%F{blue}aws:(%f%F{red}$AWS_ACCOUNT_NAME:$AWS_ACCOUNT_ROLE%f%F{blue})%F$reset_color"
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
-# Customize to your needs...
-unsetopt correct
-
-# run fortune on new terminal :)
-fortuneexport
+# )ofni_tnuocca_swa($ is $(aws_account_info) backwards
+PROMPT=`echo $PROMPT | rev | sed 's/ / )ofni_tnuocca_swa($ /'| rev`
